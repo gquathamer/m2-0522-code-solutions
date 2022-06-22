@@ -1,0 +1,90 @@
+    1  git switch main
+    2  git pull origin main
+    3  git branch command-line-basics
+    4  git switch command-line-basics 
+    5  cd command-line-basics/
+    6  man man
+    7  man cat
+    8  cat laziness.txt
+    9  cat impatience.txt
+   10  cat hubris.txt
+   11  man cat
+   12  cat laziness.txt impatience.txt hubris.txt
+   13  cat laziness.txt impatience.txt hubris.txt > three-virtues.txt
+   14  cat three-virtues.txt
+   15  man ls
+   16  man ls
+   17  ls
+   18  ls -a
+   19  ls -F
+   20  ls /lfz-staff
+   21  ls lfz-staff
+   22  ls -a lfz-staff
+   23  ls -F lfz-staff
+   24  ls -aF lfz-staff > lfz-staff/contents.txt
+   25  cat lfz-staff/contents.txt
+   26  man pwd
+   27  pwd
+   28  pwd > i-was-here.txt
+   29  ls
+   30  cat i-was-here.txt
+   31  man echo
+   32  echo "hello world"
+   33  echo "hello world" > hello.txt
+   34  ls
+   35  cat hello.txt
+   36  man touch
+   37  touch tag-youre-it.txt
+   38  touch snoot/boop.txt
+   39  ls snoot
+   40  man mkdir
+   41  mkdir parent
+   42  ls parent
+   43  ls parent/
+   44  ls penis
+   45  mkdir -p parent/child/grandchild
+   46  ls parent
+   47  ls parent/child
+   48  touch .gitkeep parent/child/grandchild
+   49  ls parent
+   50  ls -a parent
+   51  ls -a grandchild
+   52  ls -a parent/child/grandchild
+   53  touch .gitkeep
+   54  touch parent/.gitkeep
+   55  touch parent/child/.gitkeep
+   56  touch parent/child/grandchild .gitkeep
+   57  ls parent
+   58  ls -a parent
+   59  ls -a parent/child
+   60  ls -a parent/child/grandchild
+   61  ls -a parent/child/grandchild
+   62  touch parent/child/grandchild .gitkeep
+   63  ls -a parent/child/grandchild
+   64  ls -a parent/child/grandchild
+   65  touch parent/child .gitkeep
+   66  touch parent/child/.gitkeep
+   67  ls parent
+   68  ls -a parent
+   69  ls -a parent/child
+   70  ls -a parent/child/grandchild
+   71  touch parent/child/grandchild/.gitkeep.txt
+   72  ls -a parent/child/grandchild
+   73  touch parent/child/grandchild/.gitkeep
+   74  ls -a parent/child/grandchild
+   75  man mv
+   76  mv pokiemans pokemon
+   77  ls
+   78  man rm
+   79  rm lol.txt
+   80  man rm
+   81  rm -r kill-me
+   82  ls
+   83  man cp
+   84  man cp
+   85  cp and-then.txt no-and-then.txt
+   86  ls
+   87  cat and-then.txt no-and-then.txt
+   88  man history
+   89  history
+   90  history > command-history.txt
