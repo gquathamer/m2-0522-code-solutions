@@ -1,5 +1,6 @@
 const fs = require('fs');
-fs.readFile('dijkstra.txt', 'utf-8', (err, data) => {
+const fileInput = process.argv[2];
+fs.readFile(fileInput, 'utf-8', (err, data) => {
   if (err) throw err;
   console.log(data);
 });
