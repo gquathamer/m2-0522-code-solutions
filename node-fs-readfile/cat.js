@@ -1,7 +1,17 @@
 const fs = require('fs');
-for (let i = 2; i < process.argv.length; i++) {
-  fs.readFile(process.argv[i], 'utf-8', (err, data) => {
+
+const numArgs = process.argv.length;
+
+let currentArg = 2;
+
+const printText = file => {
+  fs.readFile(file, 'utf-8', (err, data) => {
     if (err) throw err;
     console.log(data);
   });
+};
+
+while (currentArg < numArgs) {
+  printText(process.argv[currentArg]);
+  currentArg++;
 }
