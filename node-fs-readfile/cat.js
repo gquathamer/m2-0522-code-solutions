@@ -8,10 +8,11 @@ const printText = file => {
   fs.readFile(file, 'utf-8', (err, data) => {
     if (err) throw err;
     console.log(data);
+    currentArg++;
+    if (currentArg < numArgs) {
+      printText(process.argv[currentArg]);
+    }
   });
 };
 
-while (currentArg < numArgs) {
-  printText(process.argv[currentArg]);
-  currentArg++;
-}
+printText(process.argv[currentArg]);
