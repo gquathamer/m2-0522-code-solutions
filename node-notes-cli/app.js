@@ -24,4 +24,12 @@ if (operation === 'read') {
   fs.writeFile('data.json', newJsonData, err => {
     if (err) throw err;
   });
+} else if (operation === 'update') {
+  const noteId = process.argv[3];
+  const newNote = process.argv[4];
+  jsonData.notes[noteId] = newNote;
+  const newJsonData = JSON.stringify(jsonData, null, 2);
+  fs.writeFile('data.json', newJsonData, err => {
+    if (err) throw err;
+  });
 }
