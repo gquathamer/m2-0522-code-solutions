@@ -16,6 +16,12 @@ if (operation === 'read') {
   const newJsonData = JSON.stringify(jsonData, null, 2);
   fs.writeFile('data.json', newJsonData, err => {
     if (err) throw err;
-    console.log(newJsonData);
+  });
+} else if (operation === 'delete') {
+  const noteId = process.argv[3];
+  delete jsonData.notes[noteId];
+  const newJsonData = JSON.stringify(jsonData, null, 2);
+  fs.writeFile('data.json', newJsonData, err => {
+    if (err) throw err;
   });
 }
