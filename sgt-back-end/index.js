@@ -19,14 +19,42 @@ app.listen(3000, () => {
 app.use(express.json());
 
 app.get('/api/grades', (req, res) => {
-  db.query('SELECT * FROM "grades"')
+  const sql = `
+    SELECT *
+    FROM "grades"
+  `;
+  db.query(sql)
     .then(result => {
       res.status(200).json(result.rows);
     })
     .catch(err => {
-      console.error(err.stack);
+      console.error(err);
       res.status(500).json({
         error: 'sorry but an unexpected error occurred'
       });
+    });
+});
+
+app.post('/api/grades', (req, res) => {
+  if (!req.body.score || req.body.score < 0 || req.body.score > 100) {
+    res.status(400).json({ error: 'request must include a score' });
+  } else if (!req.body.course) {
+    res.status(400).json({ error: 'request must include a course' });
+  } else if (!req.body.name) {
+    res.status(400).json({ error: 'request must include a name' });
+  }
+  const parameters = [req.body.name, req.body.course, req.body.score];
+  const sql = `
+    INSERT INTO "grades" ("name", "course", "score")
+    VALUES ($1, $2, $3)
+    RETURNING *
+  `;
+  db.query(sql, parameters)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'sorry but an unexpected error occurred' });
     });
 });
