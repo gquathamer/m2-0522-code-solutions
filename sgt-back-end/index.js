@@ -68,7 +68,7 @@ app.put('/api/grades/:gradeId', (req, res) => {
     res.status(400).json({ error: 'gradeId must be a positive integer' });
     return;
   } else if (!req.body.score || req.body.score < 0 || req.body.score > 100) {
-    res.status(400).json({ error: 'request must include a score' });
+    res.status(400).json({ error: 'request must include a valid score between 0 and 100' });
     return;
   } else if (!req.body.course) {
     res.status(400).json({ error: 'request must include a course' });
