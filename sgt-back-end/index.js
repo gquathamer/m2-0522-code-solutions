@@ -36,7 +36,11 @@ app.get('/api/grades', (req, res) => {
 });
 
 app.post('/api/grades', (req, res) => {
-  if (!req.body.score || req.body.score < 0 || req.body.score > 100) {
+  const score = Number(req.body.score);
+  if (!req.body.score) {
+    res.status(400).json({ error: 'request must include a valid score between 0 and 100' });
+    return;
+  } else if (score < 0 || score > 100 || isNaN(score) || !Number.isInteger(score)) {
     res.status(400).json({ error: 'request must include a valid score between 0 and 100' });
     return;
   } else if (!req.body.course) {
@@ -48,7 +52,7 @@ app.post('/api/grades', (req, res) => {
   }
   const parameters = [req.body.name, req.body.course, req.body.score];
   const sql = `
-    INSERT INTO "graes" ("name", "course", "score")
+    INSERT INTO "grades" ("name", "course", "score")
     VALUES ($1, $2, $3)
     RETURNING *
   `;
